@@ -1,13 +1,24 @@
 <template>
     <div id="client">
-        <h1>Client id: {{ $route.params.id }}</h1>
-    <router-link to="/clients">
-    <button>Come back</button></router-link> 
+        <h1>Client: {{ $route.params.id }}</h1>
+    <router-link to="/">
+    <button class="btn">Home page</button>
+    </router-link> 
+    <button class="btn" @click="prev">Previous client</button>
+    <button class="btn" @click="next">Next client</button>
     </div>
 </template>
 <script>
 export default {
-    name: 'Client'
+    name: 'Client',
+    methods:{
+        prev() {
+            this.$router.go(-1);
+        },
+        next() {
+            this.$router.go(1)
+        }
+    }
 }
 </script>
 <style scoped>

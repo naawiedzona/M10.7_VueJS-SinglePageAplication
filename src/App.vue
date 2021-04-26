@@ -5,11 +5,14 @@
       <router-link to="/clients">Clients</router-link> |
       <router-link to="/providers">Providers</router-link> |
       <router-link to="/magazine">Magazine</router-link> |
-      <router-link to="/shop">Shop</router-link>
+      <router-link to="/shop">Shop</router-link> |
+      <router-link to="/shop/food">Food</router-link> |
+      <router-link to="/shop/drinks">Drinks</router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
 
 <style>
 #app {
