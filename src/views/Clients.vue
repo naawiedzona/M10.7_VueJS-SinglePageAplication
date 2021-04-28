@@ -27,5 +27,10 @@ export default {
 .btn-client{
   padding: 10px;
   margin: 20px;
+  color: #35495E;
+  border: 2px solid #35495E;
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
 }
 </style>

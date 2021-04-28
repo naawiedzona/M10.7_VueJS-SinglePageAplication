@@ -10,7 +10,6 @@
       <router-link to="/shop/drinks">Drinks</router-link> -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,67 +18,59 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#"><router-link to="/">Home</router-link></a>
         </li>
-
-
         <li class="nav-item">
-          <a class="nav-link" href="#"><router-link to="/clients">Clients</router-link></a>
+          <a class="nav-link" href="#"><router-link to="/clients/1">Clients</router-link></a>
         </li>
-
-
-        
         <li class="nav-item">
           <a class="nav-link" href="#"><router-link to="/providers">Providers</router-link></a>
         </li>
-
-
-        
         <li class="nav-item">
           <a class="nav-link" href="#"><router-link to="/magazine">Magazine</router-link></a>
         </li>
-
-
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
             <router-link to="/shop">Shop</router-link>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" @click="currentComponent = 'Food'"><router-link to="/shop/food">Food</router-link></a></li>
+            <li><a class="dropdown-item" @click="currentComponent = 'Drinks'"><router-link to="/shop/drinks">Drinks</router-link></a></li>
           </ul>
         </li>
       </ul>
-     
     </div>
   </div>
 </nav>
-    </div>
-    <router-view/>
+</div>
+  <router-view/>
+    <keep-alive>
+      <component :is="currentComponent"></component>
+    </keep-alive>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 </template>
 
-
+<script>
+ import Food from './components/Food'
+import Drinks from './components/Drinks' 
+export default {
+   components:{
+      Food,
+      Drinks 
+  },
+   data () {
+    return {
+      currentComponent: ''
+    }
+}
+}
+</script>
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 #nav {
@@ -90,6 +81,7 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  margin-left: 20px;
 }
 
 #nav a.router-link-exact-active {
