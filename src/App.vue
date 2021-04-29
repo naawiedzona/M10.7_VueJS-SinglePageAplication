@@ -28,12 +28,12 @@
           <a class="nav-link" href="#"><router-link to="/magazine">Magazine</router-link></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" v-on:click="changeToShop">
             <router-link to="/shop">Shop</router-link>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" @click="currentComponent = 'Food'"><router-link to="/shop/food">Food</router-link></a></li>
-            <li><a class="dropdown-item" @click="currentComponent = 'Drinks'"><router-link to="/shop/drinks">Drinks</router-link></a></li>
+            <li><a class="dropdown-item" v-on:click="changeToFood"><router-link to="/shop/food">Food</router-link></a></li>
+            <li><a class="dropdown-item" v-on:click="changeToDrinks"><router-link to="/shop/drinks">Drinks</router-link></a></li> 
           </ul>
         </li>
       </ul>
@@ -42,25 +42,36 @@
 </nav>
 </div>
   <router-view/>
-    <keep-alive>
-      <component :is="currentComponent"></component>
-    </keep-alive>
   </div>
 
 </template>
 
 <script>
- import Food from './components/Food'
-import Drinks from './components/Drinks' 
+
+import {bus} from '../src/main'
 export default {
    components:{
-      Food,
-      Drinks 
+    
   },
    data () {
     return {
-      currentComponent: ''
+      currentComponent: '' 
     }
+},
+methods: {
+  changeToFood () {
+    this.currentComponent = 'Food';
+    bus.$emit('changeToFood' , 'Food');
+  },
+  changeToDrinks () {
+    this.currentComponent = 'Drinks';
+    bus.$emit('changeToDrinks' , 'Drinks');
+  },
+  changeToShop () {
+    this.currentComponent = '';
+    bus.$emit('changeToShop' , '');
+  },
+
 }
 }
 </script>

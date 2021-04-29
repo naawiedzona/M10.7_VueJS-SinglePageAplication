@@ -8,7 +8,8 @@ import 'popper.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+export const bus = new Vue();
 
 new Vue({
   router,
